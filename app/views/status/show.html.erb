@@ -1,0 +1,16 @@
+<h1 id="current_status">The current status is: <%= status_code(@current_status) %></h1>
+
+<h1>History</h1>
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Status</th>
+  </tr>
+
+  <% @status_history.each do |status| -%>
+    <%= content_tag :tr, :id => dom_id(status), :class => "history_item" do %>
+      <%= content_tag :td, status.created_at, :class => "time" %>
+      <%= content_tag :td, status_code(status), :class => "description" %>
+    <% end %>
+  <% end -%>
+</table>
